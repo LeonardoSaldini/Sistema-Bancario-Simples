@@ -2,22 +2,22 @@
 saldo = 0
 deposito = 0
 Extrato = ''
-quantidade_saques = 0
+quantidade_saques = 1
 LIMITE_SAQUES = 3
 
 menu = """
-=========================================
-        Bem vindo ao Banco Becks
-
     Selecione a Opção desejada !
 
     [D] Depósito
     [S] Saque
     [E] Extrato
     [0] Sair
-=========================================
 """
 
+print('''
+    Bem vindo ao Banco Becks
+=========================================      
+      ''')
 
 while True:
 
@@ -35,6 +35,8 @@ while True:
             valor_deposito = float(input('Digite o valor que deseja depositar: R$ '))
 
         saldo += valor_deposito
+
+        Extrato += f'Depósito: R$ {valor_deposito:.2f}\n'
                  
             
 
@@ -48,10 +50,6 @@ while True:
     if opção == 'S':
 
         valor_saque = float(input('Digite o valor que deseja sacar: R$ '))
-        
-        saldo -= valor_saque
-        
-        quantidade_saques += 1
 
         if quantidade_saques > LIMITE_SAQUES:
 
@@ -61,27 +59,40 @@ while True:
     Quantidade de saques diários atingida !
                   
                   ''')
-            
+
+        if valor_saque > saldo:
+
+            print('''
+                  
+    Não foi possível realizar a transação
+     Você não possui saldo suficiente !
+                  
+                  ''')    
         
-        else:
+        elif valor_saque > 0:
+        
+            saldo -= valor_saque
+            quantidade_saques += 1
+
             print(f"""
 
     Saque de R$ {valor_saque} realizado com sucesso !
-
     Seu saldo é de R$ {saldo}
 
                     """)
-
-
-    
-
+            
+            Extrato += f'Saque: R$ {valor_saque:.2f}\n'
 
     if opção == 'E':
 
-        print("Extrato")
+        print("\n=============== Extrato ===============")
+        print('Não foram realizadas movimentações' if not Extrato else Extrato)
+        print(f'\nSaldo: R$ {saldo:.2f}')
+        print('========================================')
 
 
     if opção == '0':
+        print('Obrigado ! Volte sempre !')
         break
 
     #else:
