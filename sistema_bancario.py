@@ -60,7 +60,7 @@ while True:
                   
                   ''')
 
-        if valor_saque > saldo:
+        elif valor_saque > saldo:
 
             print('''
                   
@@ -69,7 +69,7 @@ while True:
                   
                   ''')    
         
-        elif valor_saque > 0:
+        else: #valor_saque > 0:
         
             saldo -= valor_saque
             quantidade_saques += 1
@@ -96,4 +96,4 @@ while True:
         break
 
     #else:
-     #   print('Opção Inválida, digite a opção novamente !')
+    #    print('Opção Inválida, digite a opção novamente !')
