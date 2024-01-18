@@ -30,22 +30,15 @@ while True:
         valor_deposito = float(input('Digite o valor que deseja depositar: R$ '))
 
         while valor_deposito < 0:
-            print('Valor inválido !! Digite novamente uma valor maior que 0.')
+            print('\nValor inválido !! Digite novamente uma valor maior que 0.')
 
             valor_deposito = float(input('Digite o valor que deseja depositar: R$ '))
 
         saldo += valor_deposito
+        Extrato += f'Depósito: R$ {valor_deposito:.2f}\n'       
 
-        Extrato += f'Depósito: R$ {valor_deposito:.2f}\n'
-                 
-            
+        print(f"\nDepósito de R$ {valor_deposito:.2f} concluído com sucesso !")
 
-        print(f"""
-        Depósito de R$ {valor_deposito:.2f} concluído com sucesso !
-
-        Seu saldo agora é de R$ {saldo:.2f}
-
-        """)
 
     if opção == 'S':
 
@@ -53,33 +46,18 @@ while True:
 
         if quantidade_saques > LIMITE_SAQUES:
 
-            print('''
-                  
-    Não foi possível realizar a transação
-    Quantidade de saques diários atingida !
-                  
-                  ''')
+            print('\nNão foi possível realizar a transação\nQuantidade de saques diários atingida !')
 
         elif valor_saque > saldo:
 
-            print('''
-                  
-    Não foi possível realizar a transação
-     Você não possui saldo suficiente !
-                  
-                  ''')    
+            print('\nNão foi possível realizar a transação\nVocê não possui saldo suficiente !')    
         
         else: #valor_saque > 0:
         
             saldo -= valor_saque
             quantidade_saques += 1
 
-            print(f"""
-
-    Saque de R$ {valor_saque} realizado com sucesso !
-    Seu saldo é de R$ {saldo}
-
-                    """)
+            print(f"\nSaque de R$ {valor_saque} realizado com sucesso !")
             
             Extrato += f'Saque: R$ {valor_saque:.2f}\n'
 
