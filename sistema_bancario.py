@@ -57,9 +57,9 @@ def exibir_extrato(saldo, extrato):
     print('========================================')
 
 def criar_usuario(usuarios):
-    cpf = int(input("Digite o númerodo CPF: "))
-
+    cpf = input("Digite o número do CPF: ")
     usuario = filtrar_usuario(cpf, usuarios)
+
     if usuario:
         print("\nCpf já cadastrado !")
         return
@@ -73,7 +73,7 @@ def criar_usuario(usuarios):
     print("\n\t*** Usuário criado com sucesso ! ***")
 
 def filtrar_usuario(cpf, usuarios):
-    usuarios_filtrados = [usuario for usuario in usuarios if usuario["cpf"] == cpf]
+    usuarios_filtrados = [usuario for usuario in usuarios if usuario["CPF"] == cpf]
     return usuarios_filtrados[0] if usuarios_filtrados else None
 
 def criar_conta(agencia, numero_conta, usuarios):
@@ -92,7 +92,7 @@ def listar_contas(contas):
         linha = f"""\
             Agência:\t{conta['agencia']}
             C/C:\t\t{conta['numero_conta']}
-            Titular:\t{conta['usuario']['nome']}
+            Titular:\t{conta['usuario']['Nome']}
         """
         print("=" * 100)
         print(textwrap.dedent(linha))
